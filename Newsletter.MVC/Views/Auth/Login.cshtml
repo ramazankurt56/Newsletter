@@ -1,0 +1,37 @@
+@{
+    var error= TempData["Error"];
+    var userNameOrEmail = TempData["UserNameOrEmail"] != null ? TempData["UserNameOrEmail"] :string.Empty; 
+    var password = TempData["Password"] != null ? TempData["Password"] :string.Empty;
+    Layout = null;
+}
+
+<div class=" row d-flex justify-content-center align-items-center" style="height: 98vh;">
+
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                <h3>Sign In</h3>
+                <p>Please fiil your information to login</p>
+                
+            </div>
+            <div class="card-body">
+                <form asp-controller="Auth" asp-action="Login" method="post" autocomplete="off">
+                <div class="form-group">
+                    <label>Email or UserName</label>
+                    <input type="text" name="UserNameOrEmail" class="form-control" value="@userNameOrEmail">
+                </div>
+                <div class="form-group mt-1">
+                    <label>Password</label>
+                    <input type="text" name="Password" class="form-control" value="@password">
+                </div>
+                <div class="form-group mt-1">
+                    <button type="submit" class="btn btn-dark w-100">Sign In</button>
+                </div>
+                <div class="form-group mt-1">
+                        <span class="text-danger">@TempData["Error"]</span>
+                </div>
+            </form>
+            </div>
+        </div>
+</div>
+</div>
